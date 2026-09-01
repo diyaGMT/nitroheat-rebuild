@@ -76,23 +76,27 @@ The retired WooCommerce pages (`/shop`, `/cart`, `/checkout`, `/online-order`,
 `/my-account`) redirect to `/products`; on the live site they render nothing or
 a raw `[woocommerce_cart]` shortcode.
 
-## Known content issues carried over from the live site
+## Content decisions
 
-These are reproduced as-is and need a decision from the business:
+The live site contained several contradictions. These were resolved by the
+business on 2026-08-31 and the resolutions are baked in:
 
-1. **Warranty period contradiction.** The Support FAQ says *2 years on nitrogen
-   generators and 1 year on heaters and welders*; the Warranty policy says
-   *12 months / 12 months / 6 months*. Both are reproduced verbatim.
-2. **Two different addresses.** The footer and warranty use
-   163 SW Freeman Avenue, Hillsboro OR 97123; the technical specification sheet
-   prints 7360 SW Bonita Road, Tigard OR 97224 as the manufacturer address.
-3. **Phone number.** `+1 904 655 5818` is a Jacksonville, Florida area code for
-   an Oregon manufacturer — worth confirming.
-4. **Privacy policy references `nitroheat.net`,** not `.com`. Kept verbatim
-   rather than silently edited; see `SITE_REFERENCE` in the page.
-5. **ROI spreadsheet is a dead link** on the live site (the host returns HTTP
-   406). Listed on `/downloads` as "available on request" until the file is
-   supplied.
-6. **Balboa Capital rate quoter expired** (quotes valid 21 Aug – 19 Nov 2025).
-   The widget is not reproduced; the working "Apply for Finance" link to the
-   vendor portal is kept.
+1. **Warranty period** — the Warranty policy is authoritative. The Support FAQ
+   previously said *2 years on generators / 1 year on heaters*; it now states
+   12 months on generators, 12 months on heater controllers and 6 months on
+   heated hoses, matching `/warranty`.
+2. **Address** — 163 SW Freeman Avenue, Ste D, Hillsboro OR 97123 everywhere.
+   The Tigard OR 97224 address that appeared on the technical specification
+   sheet is no longer used.
+3. **Phone** — (503) 999-3647, replacing the Florida `+1 904 655 5818` number.
+4. **Domain** — the business owns both `nitroheat.com` and `nitroheat.net`; the
+   privacy and publishing policies name the `.com` site.
+5. **ROI spreadsheet** — the source file is a dead link on the live site (HTTP
+   406). The entry is kept on `/downloads` marked "available on request" until
+   a replacement ROI tool is built. **Follow-up: build the ROI calculator.**
+6. **Finance applications** — the Balboa Capital rate quoter (expired
+   2025-11-19) and the Balboa vendor application link are both dropped.
+   `/price` now routes finance enquiries to `/rfq` and `/contact`.
+
+Company details, the price list and navigation all live in `src/lib/site.ts`,
+so items 2 and 3 are a one-line change if they ever move again.

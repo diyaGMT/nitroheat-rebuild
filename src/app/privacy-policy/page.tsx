@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 };
 
 /**
- * Legal copy is reproduced verbatim from the previous site so that nothing is
- * silently reworded. Note: the source text refers to "nitroheat.net" — kept
- * as-is pending confirmation from the business.
+ * Legal copy is reproduced from the previous site. The source text referred to
+ * "nitroheat.net"; the business owns both domains and confirmed this policy
+ * should name the .com site.
  */
-const SITE_REFERENCE = "nitroheat.net";
+const SITE_REFERENCE = "nitroheat.com";
 
 export default function PrivacyPolicyPage() {
   const { address } = COMPANY;

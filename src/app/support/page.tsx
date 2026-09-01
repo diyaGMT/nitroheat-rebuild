@@ -80,7 +80,7 @@ const TECHNICAL_FAQ = [
   },
   {
     q: "What is the warranty period?",
-    a: "2 years on nitrogen generators and 1 year on heaters and welders.",
+    a: "12 months on nitrogen generators, 12 months on heater controllers and 6 months on heated hoses, from the original date of delivery or installation, whichever comes first.",
   },
   {
     q: "What is the warranty repair process?",

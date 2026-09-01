@@ -15,10 +15,10 @@ export const COMPANY = {
     zip: "97123",
     country: "USA",
   },
-  /** Manufacturing address as printed on the technical specification sheet. */
-  manufacturingAddress: "7360 SW Bonita Road, Ste A, Tigard, Oregon, 97224, USA",
-  phone: "+1 904 655 5818",
-  phoneHref: "tel:+19046555818",
+  /** Manufacturing address, matching the registered business address. */
+  manufacturingAddress: "163 SW Freeman Avenue, Ste D, Hillsboro, Oregon, 97123, USA",
+  phone: "(503) 999-3647",
+  phoneHref: "tel:+15039993647",
   email: "info@nitroheat.com",
   website: "https://nitroheat.com",
 } as const;

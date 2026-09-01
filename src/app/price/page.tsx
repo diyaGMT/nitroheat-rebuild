@@ -10,14 +10,6 @@ export const metadata: Metadata = {
     "NitroHeat MSRP price list for nitrogen generators, heater controllers, heated hoses and plastic welders, plus equipment finance and leasing options.",
 };
 
-/**
- * Balboa Capital vendor application link carried over from the previous site.
- * The old page also embedded a Balboa rate quoter widget; that widget's quotes
- * expired on 19 Nov 2025, so it is deliberately not reproduced here.
- */
-const FINANCE_APPLY_URL =
-  "https://www.vendorservicescenter.com/equipment-financing/apply/?aid=0014100000YIUSBAA5-095A5D5B-43ED-4199-A7B1-EC2037B270E5";
-
 const FINANCE_POINTS = [
   {
     title: "Lease through our partners",
@@ -82,34 +74,32 @@ export default function PricePage() {
               </div>
 
               <p className="mt-6 text-xs leading-relaxed text-brand-slate">
-                Financing is provided by third-party lenders. Quoted amounts are
-                subject to credit approval and do not include applicable taxes.
-                Prices exclude shipping, installation and training.
+                All finance and leasing is subject to credit approval and does
+                not include applicable taxes. Prices exclude shipping,
+                installation and training.
               </p>
             </div>
 
             <div className="rounded-lg border border-brand-line bg-white p-8">
               <h3 className="font-heading text-2xl font-bold text-brand-dark">
-                Apply for finance
+                Talk to us about finance
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-brand-slate">
-                Start an equipment finance application with our finance partner,
-                or contact us and we will walk you through the options for your
-                facility.
+                Tell us about your facility and we will put together a quote and
+                walk you through the leasing and credit options available for
+                your system.
               </p>
-              <a
-                href={FINANCE_APPLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 block rounded bg-brand-green px-6 py-3 text-center font-heading text-lg font-semibold tracking-wide text-brand-dark transition-colors hover:bg-brand-green-dark hover:text-white"
-              >
-                Apply for Finance
-              </a>
               <Link
                 href="/rfq"
-                className="mt-3 block rounded border border-brand-line px-6 py-3 text-center font-heading text-lg font-semibold tracking-wide text-brand-dark transition-colors hover:border-brand-dark"
+                className="mt-6 block rounded bg-brand-green px-6 py-3 text-center font-heading text-lg font-semibold tracking-wide text-brand-dark transition-colors hover:bg-brand-green-dark hover:text-white"
               >
                 Request a Quote
+              </Link>
+              <Link
+                href="/contact"
+                className="mt-3 block rounded border border-brand-line px-6 py-3 text-center font-heading text-lg font-semibold tracking-wide text-brand-dark transition-colors hover:border-brand-dark"
+              >
+                Contact Us
               </Link>
 
               <div className="mt-8 border-t border-brand-line pt-6 text-sm text-brand-slate">

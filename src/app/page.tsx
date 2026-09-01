@@ -185,7 +185,7 @@ export default function Home() {
                     href="/price"
                     className="rounded border border-white/25 px-5 py-2.5 font-heading text-lg font-semibold tracking-wide text-white transition-colors hover:border-white"
                   >
-                    Apply for Finance
+                    Finance Options
                   </Link>
                 </div>
               </div>
