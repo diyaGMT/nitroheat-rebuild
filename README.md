@@ -26,14 +26,40 @@ npm run dev                  # http://localhost:3000
 
 ## Environment variables
 
+Copy `.env.example` to `.env.local` and fill it in:
+
 | Variable | Required | Purpose |
 | --- | --- | --- |
 | `SENDGRID_API_KEY` | yes | API key used to deliver form submissions |
-| `SENDGRID_FROM_EMAIL` | yes | Verified sender address |
+| `SENDGRID_FROM_EMAIL` | yes | **Must be a verified SendGrid sender** — see below |
 | `CONTACT_RECIPIENT` | no | Where submissions are delivered (defaults to `COMPANY.email`) |
 
 Without the two required variables every form returns
 `"Email is not configured on the server."` — the pages still render.
+
+### Sender identity — action required
+
+`SENDGRID_FROM_EMAIL` is set to `info@nitroheat.com`, which is **not yet a
+verified sender**, so SendGrid rejects every send with:
+
+```
+403 The from address does not match a verified Sender Identity.
+```
+
+The form pipeline itself is verified working — the same code and API key sends
+successfully the moment the FROM address is one SendGrid trusts. Resolve it by
+either:
+
+1. **Authenticate the `nitroheat.com` domain** (recommended). This is how
+   `usagomobile.com` and `gomotires.com` are set up: DNS CNAME records, after
+   which any `@nitroheat.com` address can send and deliverability improves.
+2. **Single Sender Verification** for `info@nitroheat.com` — faster, no DNS,
+   but covers only that one address.
+
+Until then, forms return a 502 and the visitor sees
+*"Failed to send message. Please try again."* To demo the site working before
+DNS is done, temporarily point `SENDGRID_FROM_EMAIL` at an already-verified
+sender.
 
 ## Structure
 
