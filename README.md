@@ -37,29 +37,19 @@ Copy `.env.example` to `.env.local` and fill it in:
 Without the two required variables every form returns
 `"Email is not configured on the server."` — the pages still render.
 
-### Sender identity — action required
+### Sender identity
 
-`SENDGRID_FROM_EMAIL` is set to `info@nitroheat.com`, which is **not yet a
-verified sender**, so SendGrid rejects every send with:
+`nitroheat.com` is authenticated in SendGrid (DNS completed 2026-08-31), so any
+`@nitroheat.com` address can send. The three CNAME records — `em1922`,
+`s1._domainkey` and `s2._domainkey` — all validate.
 
-```
-403 The from address does not match a verified Sender Identity.
-```
+Verified end to end on 2026-08-31: a submission through `/api/contact` using
+the production config returns `{"ok":true}` and SendGrid accepts the message.
 
-The form pipeline itself is verified working — the same code and API key sends
-successfully the moment the FROM address is one SendGrid trusts. Resolve it by
-either:
-
-1. **Authenticate the `nitroheat.com` domain** (recommended). This is how
-   `usagomobile.com` and `gomotires.com` are set up: DNS CNAME records, after
-   which any `@nitroheat.com` address can send and deliverability improves.
-2. **Single Sender Verification** for `info@nitroheat.com` — faster, no DNS,
-   but covers only that one address.
-
-Until then, forms return a 502 and the visitor sees
-*"Failed to send message. Please try again."* To demo the site working before
-DNS is done, temporarily point `SENDGRID_FROM_EMAIL` at an already-verified
-sender.
+If sends ever start failing with
+`403 The from address does not match a verified Sender Identity`, the domain
+authentication has lapsed — re-validate it in SendGrid rather than changing the
+FROM address.
 
 ## Structure
 
