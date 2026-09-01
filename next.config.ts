@@ -32,6 +32,12 @@ const nextConfig: NextConfig = {
         destination,
         permanent: true,
       })),
+      // A Divi-era duplicate of the homepage for mobile; the rebuild is responsive.
+      {
+        source: `/mobile-layout${LEGACY_SUFFIX}`,
+        destination: "/",
+        permanent: true,
+      },
       { source: "/finance", destination: "/price", permanent: true },
       { source: "/quote", destination: "/rfq", permanent: true },
       { source: "/warranty-2", destination: "/warranty", permanent: true },
